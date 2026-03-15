@@ -52,7 +52,7 @@ Platform ini dirancang untuk masyarakat, jurnalis, dan peneliti yang ingin memah
 ```bash
 # 1. Clone repositori
 git clone <url-repo>
-cd KawalWakil
+cd PantauWakil
 
 # 2. Install dependensi
 npm install
@@ -175,7 +175,7 @@ Setiap artikel RSS diskor sebelum masuk ke dashboard. Hanya artikel dengan skor 
 ## Struktur Proyek
 
 ```
-KawalWakil/
+PantauWakil/
 ├── index.js          # Server utama (Express + Gemini AI + RSS Engine)
 ├── package.json
 ├── .env              # Konfigurasi (tidak di-commit)
