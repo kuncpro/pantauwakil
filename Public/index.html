@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PantauWakil — AI Political Intelligence</title>
+    <meta name="description" content="Platform Intelijen Politik & Transparansi Publik Indonesia">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- ==================== HEADER (ALL VIEWS) ==================== -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 8L16 12L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>PantauWakil <span class="version">v1.1.1</span></span>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button id="btn-generate-sitrep" class="btn-outline text-red" style="display:none; border-color:var(--red-alert);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px; vertical-align:middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>SITREP
+            </button>
+            <a href="#" class="header-link" id="btn-changelog">Changelog</a>
+            <div class="last-update" id="nav-last-update" style="display:none;">Terakhir Update: Belum ada data</div>
+            
+            <!-- Default button (Landing Page) -->
+            <button id="btn-enter-dashboard" class="btn-outline">Masuk Dashboard</button>
+            
+            <!-- Sync indicator (Dashboard View) -->
+            <div id="nav-sync-status" class="sync-status" style="display:none;">
+                <div class="spinner-ring"></div>
+                <span>[SYNCING...]</span>
+            </div>
+            <!-- Back to Home (Dashboard View) -->
+            <button id="btn-home" class="header-link" style="display:none; cursor:pointer; background:none; border:none; font:inherit;">&#8592; Home</button>
+        </div>
+    </header>
+
+    <!-- ==================== VIEW 1: LANDING PAGE ==================== -->
+    <section id="view-landing" class="view-section active">
+        <div class="landing-container">
+            <div class="landing-hero">
+                <h1 class="hero-title">AI Political Intelligence<br>Platform Indonesia</h1>
+                <p class="hero-subtitle">Memetakan dinamika kekuasaan, framing media, dan aktor dominan dari ratusan berita nasional secara real-time.</p>
+            </div>
+
+            <!-- Global Search Bar -->
+            <div class="search-huge-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="landing-search" class="search-input-huge" placeholder="Cari tokoh politik (misal: Prabowo)..." autocomplete="off">
+                <button id="btn-landing-search" class="btn-primary-huge">Telusuri &rarr;</button>
+            </div>
+
+            <!-- Features -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feat-icon bg-blue-soft">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Pemetaan Lanskap</h3>
+                    <p>AI mengekstrak entitas dan narasi dari ratusan berita untuk memetakan aktor dominan dan isu sentral secara otomatis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feat-icon bg-purple-soft">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <h3>Analisis Sentimen</h3>
+                    <p>Ketahui bagaimana media dan publik merespons manuver politik seorang tokoh melalui deteksi sentimen yang akurat.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feat-icon bg-green-soft">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Transparansi Data</h3>
+                    <p>Setiap klaim dan analisis didukung oleh kutipan sumber langsung untuk mencegah misinformasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 2: LAUNCH DASHBOARD TERMINAL ==================== -->
+    <section id="view-terminal" class="view-section" style="display:none; background-color: #f8fafc;">
+        <div class="dashboard-layout">
+            <!-- Left Blank / Empty State Sidebar -->
+            <div class="sidebar-dark empty-sidebar">
+                <!-- placeholder -->
+            </div>
+            
+            <!-- Right Terminal -->
+            <div class="main-content">
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="mac-btns">
+                            <span class="mac-btn red"></span>
+                            <span class="mac-btn yellow"></span>
+                            <span class="mac-btn green"></span>
+                        </div>
+                        <div class="terminal-title">PANTAUWAKIL_OSINT_TERMINAL</div>
+                        <div class="terminal-spinner"></div>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <!-- lines of logs injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIEW 3: MAIN DASHBOARD (LOADED) ==================== -->
+    <section id="view-dashboard" class="view-section" style="display:none; background-color: #f8fafc;">
+        <div class="dashboard-layout">
+            
+            <!-- LEFT PANEL: FAKTA MENTAH (DARK MODE) -->
+            <aside class="sidebar-dark">
+                <div class="sidebar-header">
+                    <h2>FAKTA MENTAH (OSINT)</h2>
+                    <span class="article-count" id="header-article-count">— Artikel</span>
+                </div>
+                <div class="osint-feed" id="osint-feed">
+                    <!-- Raw facts cards injected here via JS -->
+                </div>
+            </aside>
+
+            <!-- RIGHT PANEL: ANALYTICS (LIGHT MODE) -->
+            <main class="main-content light-mode">
+                
+                <!-- RED FLAGS SECTION -->
+                <div class="dashboard-section red-flag-section">
+                    <h2 class="section-title text-red">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        Sistem Peringatan Dini (Red Flags)
+                    </h2>
+                    <div class="red-flag-grid" id="red-flags-container">
+                        <!-- Red Flag Cards injected here -->
+                    </div>
+                </div>
+
+                <div class="dashboard-split">
+                    <!-- WIDGET 1: ANALISIS KHUSUS -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                Analisis Khusus Tokoh
+                            </h3>
+                            <span class="status-badge status-green">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Live Web Grounding Active
+                            </span>
+                        </div>
+                        <div class="widget-input-group">
+                            <input type="text" id="input-profiler" placeholder="Ketik nama politisi (misal: Prabowo)..." class="input-light">
+                            <button id="btn-profiler-search" class="btn-light-subtle">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                Analisis
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- WIDGET 2: KABAR DAPIL -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                Kabar Dapil Anda
+                            </h3>
+                            <span class="status-badge status-green">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Live Web Grounding
+                            </span>
+                        </div>
+                        <div class="widget-input-group">
+                            <input type="text" id="input-dapil" placeholder="Misal: Jawa Barat I, DKI Jakarta..." class="input-light">
+                            <button id="btn-dapil-search" class="btn-light-subtle">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                Cek
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- WIDGET 3: FLIP-FLOP DETECTOR -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title" style="color:#d97706;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 0 0 4.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 0 1-15.357-2m15.357 2H15"></path></svg>
+                                Radar Flip-Flop
+                            </h3>
+                            <span class="status-badge status-green">Live Web Grounding</span>
+                        </div>
+                        <div class="widget-input-group">
+                            <input type="text" id="input-flipflop" placeholder="Nama Tokoh..." class="input-light">
+                            <button id="btn-flipflop-search" class="btn-light-subtle">Lacak</button>
+                        </div>
+                    </div>
+
+                    <!-- WIDGET 4: WHAT-IF SIMULATOR -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3 class="widget-title" style="color:#4c1d95;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                What-If Simulator
+                            </h3>
+                             <span class="status-badge status-green">Live Web Grounding</span>
+                        </div>
+                        <div class="widget-input-group">
+                            <input type="text" id="input-whatif" placeholder="Ketik skenario (misal: A & B koalisi)..." class="input-light">
+                            <button id="btn-whatif-search" class="btn-light-subtle">Simulasikan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIMELINE SECTION -->
+                <div class="dashboard-section timeline-section">
+                    <h2 class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        Timeline Dinamika Politik Terkini
+                    </h2>
+                    <div class="timeline-container" id="timeline-container">
+                        <!-- Timeline items injected here -->
+                    </div>
+                </div>
+
+                <!-- NETWORK GRAPH SECTION -->
+                <div class="dashboard-section graph-section">
+                    <h2 class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        Konstelasi Aktor Politik (D3.js Network)
+                    </h2>
+                    <div class="graph-container" id="network-graph-container" style="width: 100%; height: 500px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; position:relative; overflow:hidden;">
+                        <div id="graph-overlay" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center; color:#94a3b8; z-index:10;">
+                            <button id="btn-generate-graph" class="btn-primary-huge" style="padding: 0.5rem 1rem; font-size:0.9rem;">Analisis Relasi OSINT</button>
+                        </div>
+                        <svg id="d3-svg" width="100%" height="100%"></svg>
+                    </div>
+                </div>
+
+                <!-- SUMBER DATA & SYNC BUTTON -->
+                <div class="dashboard-section source-section">
+                    <h2 class="section-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                        Transparansi Sumber Data
+                    </h2>
+                    <p class="source-desc">Analisis didasarkan pada ratusan artikel berita terbaru dengan teknik NLP.</p>
+                    <div id="source-links-container"></div>
+                    
+                    <div class="sync-floater" id="btn-sync-data">
+                        <div class="spinner-ring" id="sync-floater-spinner"></div>
+                        <div class="sync-text-box">
+                            <strong>Menyinkronkan Data...</strong>
+                            <span>Mengambil berita terbaru & menganalisis AI</span>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+    <!-- PROFILER MODAL (OVERLAY) -->
+    <div class="modal-overlay" id="profiler-modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Laporan Profil Tokoh</h2>
+                <button class="btn-close-modal" id="btn-close-profiler">&times;</button>
+            </div>
+            <div class="modal-body" id="profiler-result-body">
+                <!-- Result from /api/profile -->
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERIC MODAL (OVERLAY) -->
+    <div class="modal-overlay" id="generic-modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="generic-modal-title">Hasil Analisis</h2>
+                <button class="btn-close-modal" id="btn-close-generic">&times;</button>
+            </div>
+            <div class="modal-body" id="generic-modal-body">
+                <!-- Result from APIs -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CHANGELOG MODAL -->
+    <div class="modal-overlay" id="changelog-modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Changelog — PantauWakil</h2>
+                <button class="btn-close-modal" id="btn-close-changelog">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom:20px;">
+                    <h3 style="color:var(--brand-blue); margin-bottom:4px;">v1.1.1 <span style="font-size:0.75rem; color:#64748b; font-weight:400;">— Maret 2026</span></h3>
+                    <ul style="padding-left:20px; line-height:1.8; color:#374151;">
+                        <li>Fitur <b>Kabar Dapil</b> aktif dengan Google Search Grounding</li>
+                        <li>Cache RSS 10 menit untuk respons lebih cepat</li>
+                        <li>Tambah 4 sumber berita backup (CNBC, Kompas, Detik, Bisnis.com)</li>
+                        <li>Loading skeleton di sidebar OSINT saat sinkronisasi</li>
+                        <li>Tombol Back to Home dari dashboard</li>
+                        <li>Berita OSINT dan Transparansi Sumber sekarang bisa diklik</li>
+                        <li>Legenda warna, zoom, dan tooltip di graf konstelasi aktor</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h3 style="color:#7c3aed; margin-bottom:4px;">v1.1.0 <span style="font-size:0.75rem; color:#64748b; font-weight:400;">— Fase 3: Enterprise Intel</span></h3>
+                    <ul style="padding-left:20px; line-height:1.8; color:#374151;">
+                        <li>Tambah <b>SITREP</b> — One-Pager Executive Intelligence Report</li>
+                        <li>Tambah <b>Radar Flip-Flop</b> — Detektor inkonsistensi tokoh</li>
+                        <li>Tambah <b>What-If Simulator</b> — Simulasi manuver politik</li>
+                        <li>Tambah <b>D3.js Network Graph</b> — Konstelasi relasi aktor</li>
+                        <li>Google Search Grounding aktif di 4 fitur AI</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color:#16a34a; margin-bottom:4px;">v1.0.0 <span style="font-size:0.75rem; color:#64748b; font-weight:400;">— Rilis Awal</span></h3>
+                    <ul style="padding-left:20px; line-height:1.8; color:#374151;">
+                        <li>Dashboard OSINT real-time dari 7 RSS feed nasional</li>
+                        <li>Sistem skoring validasi berita 100/100</li>
+                        <li>Profiler tokoh politik dengan analisis mendalam</li>
+                        <li>Red Flags &amp; Timeline AI berbasis headline berita</li>
+                        <li>Terminal loading dengan efek typewriter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
